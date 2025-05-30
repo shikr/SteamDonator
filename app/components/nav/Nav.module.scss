@@ -1,19 +1,56 @@
 @use '../../vars';
 
+.menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px;
+  transition-duration: 500ms;
+  transition-property: opacity;
+
+  & > * {
+    flex-basis: 40px;
+  }
+
+  @media (width >= vars.$breakpoint-sm) {
+    display: none;
+  }
+}
+
+.disabled {
+  position: absolute;
+  z-index: -999;
+  opacity: 0;
+}
+
 .container {
   display: flex;
+  position: absolute;
+  z-index: -999;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   padding: 4px;
   margin-bottom: 10px;
   box-shadow: 0 1px 2px #fffb;
+  transition-duration: 500ms;
+  transition-property: opacity;
+  opacity: 0;
 
   @media (width >= vars.$breakpoint-sm) {
     flex-direction: row;
     justify-content: space-between;
     gap: 0;
+    z-index: inherit;
+    position: inherit;
+    opacity: 1;
   }
+}
+
+.enabled {
+  z-index: inherit;
+  position: inherit;
+  opacity: 1;
 }
 
 .item {
@@ -23,9 +60,24 @@
   gap: 2px;
   width: 100%;
 
+  & > :not(.home) {
+    // flex-grow: 1;
+    flex-basis: 40px;
+
+    @media (width >= vars.$breakpoint-sm) {
+      display: none;
+    }
+  }
+
   @media (width >= vars.$breakpoint-sm) {
     width: auto;
   }
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  flex-grow: 2;
 }
 
 .right {
