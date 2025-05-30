@@ -1,0 +1,13 @@
+@use 'sass:color';
+
+$bg: transparent;
+$bg-base: #fff;
+$hover-opacity: 0.2;
+$input-opacity: 0.5;
+
+$breakpoint-sm: 40rem;
+$breakpoint-md: 48rem;
+
+@function bg-color($opacity) {
+  @return color.change($bg-base, $alpha: $opacity);
+}

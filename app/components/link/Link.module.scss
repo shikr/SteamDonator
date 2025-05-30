@@ -1,0 +1,12 @@
+@use '../../vars';
+
+.link {
+  padding: 6px;
+  border-radius: 8px;
+  transition-duration: 200ms;
+  transition-property: background-color;
+
+  &:hover {
+    background-color: vars.bg-color(vars.$hover-opacity);
+  }
+}
